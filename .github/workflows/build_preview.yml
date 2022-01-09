@@ -28,12 +28,12 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: resume.tex
-          args: -pdf -jobname=PDF-Preview
+          args: -pdf -jobname=Build
 
       # Runs a set of commands using the runners shell
       - name: Upload preview
         uses: actions/upload-artifact@v1
         with:
           name: resume-pdf
-          path: PDF-Preview.pdf
+          path: Build.pdf
           if-no-files-found: error
