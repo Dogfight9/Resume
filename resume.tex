@@ -1,0 +1,88 @@
+% LaTeX Master Resume
+
+\documentclass[12pt,a4paper,sans]{moderncv}
+
+\moderncvstyle{banking}
+\moderncvcolor{black}
+
+\usepackage[scale=0.75]{geometry}
+
+\name{Michael}{Myers}
+\title{SOFTWARE ENGINEER SEEKING FUN/CHALLENGING CAREER}
+\address{Hide address just in case}{Modesto}{CA}
+\email{2michaelmyers@gmail.com}
+
+\social[linkedin]{michael.myers}
+
+\makeatletter
+\def\@mymobile{(555)555-5555}%
+\RenewDocumentCommand{\section}{sm}{%
+  \strut\sectionstyle{#2\hfill}%
+  \par\nobreak\addvspace{1ex}\@afterheading
+  }
+\makeatother
+
+\renewcommand*{\cventry}[7][.25em]{
+  \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
+    % skip the company name and location line if both are empty, allowing one to show multiple roles within the same company without repeating it
+    \ifboolexpr{%
+      test {\ifstrempty{#4}}
+      and
+      test {\ifstrempty{#5}}}%
+      {}%
+      {\tab[1cm]{\bfseries #4} & {\bfseries #5}\\}%
+    {\tab[1cm]\itshape #3\ifstrempty{#6}{}{, #6}} & {\itshape #2}\\%
+  \end{tabular*}%
+  \ifx&#7&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#7%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\newcommand*{\myjobentry}[8][.25em]{%
+    \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
+      % skip the company name and location line if both are empty, allowing one to show multiple roles within the same company without repeating it
+      \tab[1cm]{\bfseries #3}{ $|$ }{\bfseries #4}{ $|$ }{\bfseries #5} & {\itshape #2}\\%
+      \tab[1.25cm]{#6}\\%
+      \tab[1.25cm]{#7}\\%
+      \tab[1.25cm]{#8}\\%
+    \end{tabular*}%
+    \par\addvspace{#1}}
+    
+\makeatletter
+\newcommand*{\mymakeresumetitle}{%
+    % Above line section
+    \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
+        \textbf{\huge\@firstname \hspace{0.5mm} \@familyname} & {\@email}%
+    \end{tabular*}%
+    % Line
+    \par\noindent\rule{\textwidth}{0.4pt}
+    % Below line section
+    \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
+        \@addressstreet, \@addresscity, \@addresscountry & {\mobilephonesymbol~{\@mymobile}}%
+    \end{tabular*}%
+    % Statement section
+    \newline
+    \newline
+    \centerline{\textbf{\@title}}
+    \newline
+
+}
+\makeatother
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+\mymakeresumetitle
+\section{Employment}
+\myjobentry{2018 to current}{DevOps Engineer}{HPE Aruba}{Roseville, CA}{Work with Yocto}{Solve bugs in large esoteric 3rd party codebase}{Support lab with debugging}
+
+\section{Education}
+\cventry{2015--2019}{BS Computer Science, Minor in Economics}{University of the Pacific}{Stockton, CA}{\textit{3.86 GPA}}{}
+
+\section{Projects}
+
+\section{Skills}
+
+\end{document}
