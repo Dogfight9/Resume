@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build
+name: PDF-Preview
 
 # Controls when the workflow will run
 on:
@@ -10,6 +10,7 @@ on:
     paths:
       - resume.tex
       - resume.cls
+      - .github/workflows/build_preview.yml
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -28,12 +29,12 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: resume.tex
-          args: -pdf -jobname=Build
+          args: -pdf -jobname=PDF-Preview
 
       # Runs a set of commands using the runners shell
       - name: Upload preview
         uses: actions/upload-artifact@v1
         with:
           name: resume-pdf
-          path: Build.pdf
+          path: PDF-Preview.pdf
           if-no-files-found: error

@@ -26,14 +26,14 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: resume.tex
-          args: -pdf -jobname=Build
+          args: -pdf -jobname=PDF-Preview
 
       # Runs a set of commands using the runners shell
       - name: Upload preview
         uses: actions/upload-artifact@v1
         with:
           name: resume-pdf
-          path: Build.pdf
+          path: PDF-Preview.pdf
 
       - name: Publish PDF
         id: publish_pdf
@@ -41,6 +41,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: Build.pdf
+          files: PDF-Preview.pdf
           draft: false
           prerelease: false
